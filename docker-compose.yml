@@ -1,23 +1,14 @@
-version: '3.8'
+version: '3.3'
 
 services:
-    prod:
-        container_name: nestjs_api
-        image: nestjs-api:1.0.0
+    producao:
+        container_name: fin_api
         build:
             context: .
-            dockerfile: .
-        command: npm run start:prod
+            dockerfile: DockerFile
         ports:
-            - 8000:3000
-        networks:
-            - nesjs-network
-        volumes:
-            - .:/workspace
-            - /workspace/node_modules
+            - 8005:3001
         restart: unless-stopped
         environment: 
           - URL_DATABASE=mongodb://192.168.0.20:49155
           - DB=mongo-fin-api
-networks:
-    nesjs-network:
