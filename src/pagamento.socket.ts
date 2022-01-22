@@ -18,6 +18,7 @@ export class PagamentoSocketService implements  OnGatewayConnection{
 
     @SubscribeMessage('lancamento-pagamento')
     async sendPagamentos(@MessageBody() pag:Pagamento){
+        pag.usuario = process.env.CHAVE;
         await this.pagService.create(pag);
     }
 
